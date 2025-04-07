@@ -1,3 +1,17 @@
+export const users = {
+    "user1": {
+        "name": "Ana",
+        "email": "ana@gmail.com",
+        "skillLevel": 35
+    },
+    "user2" : {
+        "name": "John",
+        "email": "john@gmail.com",
+        "skillLevel": 81
+    }
+
+
+}
 export const userInfo = {
     "users": {
         "user1": {

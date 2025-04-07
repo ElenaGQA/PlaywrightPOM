@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { MainPage, MainPageUI } from '../pages/MainPage';
+import { users } from '../assets/test_data';
 
 
 test.describe("Main page tests", () => {
@@ -11,28 +12,28 @@ test.describe("Main page tests", () => {
     })
 
     test("Fill the form and join Guild Memebers should be functional", async ({ page }) => {
-        await mainPage.fillName("John");
-        await mainPage.fillEmail("john@gmail.com");
+        await mainPage.fillName(users.user2.name);
+        await mainPage.fillEmail(users.user2.email);
         await mainPage.selectHeroOfQualityRadio();
-        await mainPage.selectYourQASkillLevel(81);
+        await mainPage.selectYourQASkillLevel(users.user2.skillLevel);
         await mainPage.clickJoinQAGuildButton();
-        const row = await page.getByRole("row", { name: "John" });
+        const row = await page.getByRole("row", { name: users.user2.name });
         await expect(row).toBeVisible();
-        await expect(row.getByRole("cell", { name: "john@gmail.com" })).toBeVisible();
+        await expect(row.getByRole("cell", { name: users.user2.email })).toBeVisible();
         // await expect(row.getByRole("cell", { name: "Hero of Quality" })).toBeVisible(); // bug: "hero" in place of "Hero of Quality"
-        await expect(row.getByRole("cell", { name: "81" })).toBeVisible();
+        await expect(row.getByRole("cell", { name: users.user2.skillLevel })).toBeVisible();
 
         await mainPage.open();
-        await mainPage.fillName("Ana");
-        await mainPage.fillEmail("ana@gmail.com");
+        await mainPage.fillName(users.user1.name);
+        await mainPage.fillEmail(users.user1.email);
         await mainPage.selectTricksterOfBugsRadio();
-        await mainPage.selectYourQASkillLevel(35);
+        await mainPage.selectYourQASkillLevel(users.user1.skillLevel);
         await mainPage.clickJoinQAGuildButton();
-        const row1 = await page.getByRole("row", { name: "Ana" });
-        expect(row1).toBeVisible();
-        await expect(row1.getByRole("cell", { name: "ana@gmail.com" })).toBeVisible();
+        const row1 = await page.getByRole("row", { name: users.user1.name });
+        await expect(row1).toBeVisible();
+        await expect(row1.getByRole("cell", { name: users.user1.email })).toBeVisible();
         // await expect(row1.getByRole("cell", { name: "Trickster of Bugs" })).toBeVisible(); // bug: "trickster" in place of "Trickster of Bugs"
-        await expect(row1.getByRole("cell", { name: "35" })).toBeVisible();
+        await expect(row1.getByRole("cell", { name: users.user1.skillLevel })).toBeVisible();
     })
 
     test("Upload Your Tester Portrait should be functional", async ({ page }) => {

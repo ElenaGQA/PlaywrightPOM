@@ -155,7 +155,7 @@ export class QuestPage {
 
     async verifyActionAlertMessage(text: string) {
         await expect(this.SUBMIT_ACTION_ALERT).toContainText("You have performed the action:");
-        await expect(this.SUBMIT_ACTION_ALERT).toContainText(text);
+        await expect(this.SUBMIT_ACTION_ALERT).toContainText(text); 
     }
 
     async verifyInvalidActionAlertMessage() {

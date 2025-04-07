@@ -98,18 +98,18 @@ export class QuestConfigurationPage {
         }, newSize);
 
         const value = await this.TESTING_TEAM_SIZE_RANGE.inputValue();
-        expect(value).toBe(newSize.toString());
+        await expect(value).toBe(newSize.toString());
     }
 
     async clickInfiniteQAAdventureButton() {
         await this.INFINITE_QA_ADVENTURE_BUTTON.click()
     }
 
-    async verifyQAAdventureAlert(text : string) {
+    async verifyQAAdventureAlert(text: string) {
         await expect(this.QA_ADVENTURE_ALERT).toContainText(text)
     }
 
-    
+
 
     async clickEmbarkOnTestingButton() {
         await this.EMBARK_ON_TESTING_BUTTON.click();
@@ -119,7 +119,7 @@ export class QuestConfigurationPage {
         await this.RECONSIDER_THY_TESTING_STRATEGY_BUTTON.click()
     }
 
-    async verifyRedirectToQAQestPage(){
+    async verifyRedirectToQAQestPage() {
         await expect(this.QA_QUEST_PAGE_NAME).toContainText("QA Quest:")
     }
 
